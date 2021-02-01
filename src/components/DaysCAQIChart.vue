@@ -30,8 +30,8 @@ export default defineComponent({
       daysData[hourStats.day]['PM10']['sum'] += hourStats['PM10']
     })
 
-    const days : Array<Number> = []
-    const caqi : Array<Number> = []
+    const days : Array<number> = []
+    const caqi : Array<number> = []
 
     daysData.forEach((dayData, day) => {
       days.push(day)
@@ -72,7 +72,7 @@ export default defineComponent({
       xaxis: {
         categories: days,
         labels: {
-          formatter: (value: Number) => {
+          formatter: (value: number) => {
             let prefix = ''
             if (value < 10) {
               prefix = '0'
@@ -82,14 +82,14 @@ export default defineComponent({
       },
       yaxis: {
         labels: {
-          formatter: (value: Number) => String(value.toFixed(2)),
+          formatter: (value: number) => String(value.toFixed(2)),
         },
         min: 0,
         max: 100,
       },
       tooltip: {
         y: {
-          formatter: (value: Number) => {
+          formatter: (value: number) => {
               const val = value > 100 ? '>100' : value.toFixed(2)
               const caqi = getCAQIdata(value)
               return `${val} (${caqi.label})`
